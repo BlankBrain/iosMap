@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     }
 
     func checkLocationServices() {
+        //========= checks if the location is enabled in ios
          if CLLocationManager.locationServicesEnabled() {
             setupLocationManager()
             checkLocationAuthorization()
@@ -36,6 +37,7 @@ class ViewController: UIViewController {
            locationManager.desiredAccuracy = kCLLocationAccuracyBest
        }
     func checkLocationAuthorization() {
+        //           checkes location authorization Status and acts accordingly
          switch CLLocationManager.authorizationStatus() {
          case .authorizedWhenInUse:
              mapView.showsUserLocation = true
@@ -57,6 +59,7 @@ class ViewController: UIViewController {
      }
      
     func centerViewOnUserLocation() {
+        //            zoom on user location 
         if let location = locationManager.location?.coordinate {
             let region = MKCoordinateRegion.init(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
             mapView.setRegion(region, animated: true)
